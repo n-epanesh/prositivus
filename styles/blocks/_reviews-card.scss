@@ -1,0 +1,60 @@
+.reviews-card {
+  --reviewsCardCorrnerWidth: 40px;
+  --reviewsCardCorrnerOffsetLeft: 52px;
+
+  @include mobile {
+    --reviewsCardCorrnerWidth: 32px;
+    --reviewsCardCorrnerOffsetLeft: 46px;
+  
+  }
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+
+  @include mobile {
+    row-gap: 44px;
+  }
+
+  &__body {
+    position: relative;
+    padding: 48px var(--reviewsCardCorrnerOffsetLeft) 52px;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--bordder-radius-large);
+
+    @include mobile {
+        padding: 30px;
+    }
+
+    &::after {
+      @include square(var(--reviewsCardCorrnerWidth));
+
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: var(--reviewsCardCorrnerOffsetLeft);
+      background-color: var(--color-dark);
+      border: inherit;
+      rotate: 45deg;
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      translate: 0 -50%;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    padding-left: calc(
+      var(--reviewsCardCorrnerOffsetLeft) + var(--reviewsCardCorrnerWidth) / 2
+    );
+  }
+
+  &__name,
+  &__company {
+    font-style: normal;
+  }
+
+  &__name {
+    color: var(--color-accent);
+  }
+}
